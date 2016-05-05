@@ -1,4 +1,5 @@
 config/config_env.rb
+.bundle/
 
 views/*.html
 *.codekit

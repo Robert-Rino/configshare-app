@@ -2,6 +2,14 @@ require 'sinatra'
 
 # Base class for ConfigShare Web Application
 class ShareConfigurationsApp < Sinatra::Base
+  get '/account/:username' do
+    if @current_account && @current_account['username'] == params[:username]
+      slim(:account)
+    else
+      slim(:login)
+    end
+  end
+
   get '/login/?' do
     slim :login
   end
@@ -25,17 +33,5 @@ class ShareConfigurationsApp < Sinatra::Base
     @current_account = nil
     session[:current_account] = nil
     slim :login
-  end
-
-  get '/account/:username' do
-    if @current_account && @current_account['username'] == params[:username]
-      slim(:account)
-    else
-      slim(:login)
-    end
-  end
-
-  get '/register' do
-    slim(:register)
   end
 end

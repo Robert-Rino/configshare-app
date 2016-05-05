@@ -1,7 +1,6 @@
 require 'sinatra'
-require 'json/jwt'
 
-# Basec class for ConfigShare Web Application
+# Base class for ConfigShare Web Application
 class ShareConfigurationsApp < Sinatra::Base
   use Rack::Session::Cookie, coder: CookieEncoder.new,
                              let_coder_handle_secure_encoding: true
